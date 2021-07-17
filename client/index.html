@@ -5,9 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      .chat {
+        border: 1px solid black;
+        min-height: 200px;
+      }
+    </style>
+    <script defer src="script.js"></script>
   </head>
   <body>
-    <h1>I am index.html</h1>
-    <script src="./script.js"></script>
+    <div class="chat"></div>
+    <div>
+      <label for="message">Message</label>
+      <input type="text" id="message" />
+      <button class="send-button">send</button>
+    </div>
+    <div>
+      <label for="room">Room</label>
+      <input type="text" id="room" />
+      <button class="join-button">Join</button>
+    </div>
   </body>
 </html>
