@@ -1,9 +1,17 @@
 import { io } from 'socket.io-client';
 
-const socket = io('http://localhost:3000');
+const socket = io('ws://localhost:3000');
 
-socket.on('connect', () => {
-  console.log(socket.id);
+const sendButton = document.querySelector('.send-button');
+const messageInput = document.querySelector('.message');
+const messageList = document.querySelector('.messages');
+
+sendButton.addEventListener('click', () => {
+  socket.emit('message', messageInput.value);
 });
 
-console.log('this is great!');
+socket.on('message', (userId, message) => {
+  const m = `<li>${userId.substring(0, 2)} said ${message}</li>`;
+
+  messageList.insertAdjacentHTML('beforeend', m);
+});
