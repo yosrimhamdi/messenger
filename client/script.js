@@ -6,8 +6,14 @@ const sendButton = document.querySelector('.send-button');
 const messageInput = document.querySelector('.message');
 const messageList = document.querySelector('.messages');
 
+socket.on('connect', () => {
+  document.body.insertAdjacentHTML('beforebegin', `YOU ARE: ${socket.id}`);
+});
+
 sendButton.addEventListener('click', () => {
-  socket.emit('message', messageInput.value);
+  const room = document.querySelector('.room').value;
+
+  socket.emit('message', messageInput.value, room);
 });
 
 socket.on('message', (userId, message) => {
