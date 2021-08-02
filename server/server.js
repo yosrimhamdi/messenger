@@ -8,4 +8,8 @@ io.on('connection', socket => {
       socket.to(room).emit('message', socket.id, message);
     }
   });
+
+  socket.on('join-room', room => {
+    socket.join(room);
+  });
 });
